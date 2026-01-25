@@ -38,7 +38,7 @@ float MyVECTOR::get_magnitude(float x, float y) {
 }
 
 void MyVECTOR::get_cord(float azimuth, float magnitude) {
-    if (magnitude < 0) { //Reverse
+    if (magnitude < 0) {
         azimuth += 180;
         if (azimuth >= 360) azimuth -= 360;
         magnitude = -magnitude;
