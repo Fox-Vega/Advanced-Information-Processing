@@ -37,6 +37,30 @@ float MyVECTOR::get_magnitude(float x, float y) {
     return sqrtf(x * x + y * y);
 }
 
+float MyVECTOR::get_cordx(float azimuth, float magnitude) {
+    if (magnitude < 0) {
+        azimuth += 180;
+        if (azimuth >= 360) azimuth -= 360;
+        magnitude = -magnitude;
+    }
+    theta = 90 - azimuth;
+    while (theta > 180) theta -= 360;
+    while (theta < -180) theta += 360;
+    return round(cos(theta * M_PI / 180.0) * magnitude);
+}
+
+float MyVECTOR::get_cordy(float azimuth, float magnitude) {
+    if (magnitude < 0) {
+        azimuth += 180;
+        if (azimuth >= 360) azimuth -= 360;
+        magnitude = -magnitude;
+    }
+    theta = 90 - azimuth;
+    while (theta > 180) theta -= 360;
+    while (theta < -180) theta += 360;
+    return round(sin(theta * M_PI / 180.0) * magnitude);
+}
+
 void MyVECTOR::get_cord(float azimuth, float magnitude) {
     if (magnitude < 0) {
         azimuth += 180;
