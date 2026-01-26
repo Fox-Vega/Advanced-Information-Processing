@@ -21,8 +21,11 @@ class Codec {
 };
 
 
+// message_write: pointer to the message buffer 
+// start/end: range of bytes to encode 
+// keyindex: index at which the generated bitmask key will be stored
+
 void Codec::encode(uint8_t *message_write, int start, int end, int keyindex) {
-    if((end - start + 1) <= 8) {
         uint8_t key = 0;
         for (int i = start; i <= end; i++) {
             if (message_write[i] == START_MARKER) {
