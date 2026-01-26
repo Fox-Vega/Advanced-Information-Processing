@@ -8,11 +8,11 @@ class MyVECTOR {
     public:
         float get_azimuth(float x, float y); //Get azimuth(0-360) from vector coordinates
         float get_magnitude(float x, float y); //Get magnitude from vector coordinates
-        float get_cordx(float azimuth, float magnitude); //Get vector x from azimuth(0-360) and magnitude
-        float get_cordy(float azimuth, float magnitude); //Get vector y from azimuth(0-360) and magnitude
+        float get_cordx(float azimuth, float magnitude); //Get vector x from azimuth(0-360) and magnitude (Recalculate every time)
+        float get_cordy(float azimuth, float magnitude); //Get vector y from azimuth(0-360) and magnitude (Recalculate every time)
         void get_cord(float azimuth, float magnitude); //Convert azimuth(0-360) and magnitude into vector coordinates
-        float get_x(); //Get vector_x
-        float get_y(); //Get vector_y
+        float get_x(); //Get vector_x (Recalculate when getcord() runs)
+        float get_y(); //Get vector_y (Recalculate when getcord() runs)
         float get_vectordegree(float ax, float ay, float bx, float by); //Calculate the angle difference between two vectors
 
     private:
