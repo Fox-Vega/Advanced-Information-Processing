@@ -16,10 +16,13 @@ class MyVECTOR {
         float get_vectordegree(float ax, float ay, float bx, float by); //Calculate the angle difference between two vectors
 
     private:
-        int x, y;
+        float x, y;
         double theta;
         double azimuth;
-        #define M_PI 3.14159265358979323846 //To be safe
+        #ifndef M_PI
+        #define M_PI 3.14159265358979323846
+        #endif
+
 };
 
 
@@ -48,7 +51,7 @@ float MyVECTOR::get_cordx(float azimuth, float magnitude) {
     theta = 90 - azimuth;
     while (theta > 180) theta -= 360;
     while (theta < -180) theta += 360;
-    return round(cos(theta * M_PI / 180.0) * magnitude);
+    return cos(theta * M_PI / 180.0) * magnitude;
 }
 
 float MyVECTOR::get_cordy(float azimuth, float magnitude) {
@@ -60,7 +63,7 @@ float MyVECTOR::get_cordy(float azimuth, float magnitude) {
     theta = 90 - azimuth;
     while (theta > 180) theta -= 360;
     while (theta < -180) theta += 360;
-    return round(sin(theta * M_PI / 180.0) * magnitude);
+    return sin(theta * M_PI / 180.0) * magnitude;
 }
 
 void MyVECTOR::get_cord(float azimuth, float magnitude) {
@@ -72,8 +75,8 @@ void MyVECTOR::get_cord(float azimuth, float magnitude) {
     theta = 90 - azimuth;
     while (theta > 180) theta -= 360;
     while (theta < -180) theta += 360;
-    x = round(cos(theta * M_PI / 180.0) * magnitude);
-    y = round(sin(theta * M_PI / 180.0) * magnitude);
+    x = cos(theta * M_PI / 180.0) * magnitude;
+    y = sin(theta * M_PI / 180.0) * magnitude;
 }
 
 float MyVECTOR::get_x() {
@@ -91,5 +94,6 @@ float MyVECTOR::get_vectordegree(float ax, float ay, float bx, float by) {
     double cos_theta = (ax * bx + ay * by) / (a_magnitude * b_magnitude);
     if (cos_theta > 1.0f) cos_theta = 1.0f;
     if (cos_theta < -1.0f) cos_theta = -1.0f;
-    return degrees(acos(cos_theta));
+    return acos(cos_theta) * 180.0 / M_PI;
+;
 }
