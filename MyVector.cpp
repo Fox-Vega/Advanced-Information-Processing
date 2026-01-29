@@ -95,5 +95,4 @@ float MyVECTOR::get_vectordegree(float ax, float ay, float bx, float by) {
     if (cos_theta > 1.0f) cos_theta = 1.0f;
     if (cos_theta < -1.0f) cos_theta = -1.0f;
     return acos(cos_theta) * 180.0 / M_PI;
-;
 }
